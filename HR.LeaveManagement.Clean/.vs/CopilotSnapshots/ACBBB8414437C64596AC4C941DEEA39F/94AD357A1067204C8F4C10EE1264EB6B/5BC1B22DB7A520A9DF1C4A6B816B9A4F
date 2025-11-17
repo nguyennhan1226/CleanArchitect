@@ -1,0 +1,37 @@
+﻿using AutoMapper;
+using HR.LeaveManagement.Application.Contracts.Logging;
+using HR.LeaveManagement.Application.Contracts.Persistence;
+using HR.LeaveManagement.Application.Features.LeaveType.Queries.GetAllLeaveTypes;
+using HR.LeaveManagement.Application.MappingProfiles;
+using HR.LeaveManagement.Application.UnitTests.Mocks;
+using Moq;
+
+namespace HR.LeaveManagement.Application.UnitTests.Features.LeaveTypes.Queries
+{
+    public class GetLeaveTypesQueryHandlerTests
+    {
+        private readonly Mock<ILeaveTypeRepository> _mockRepo;
+        private IMapper _mapper;
+        private Mock<IAppLogger<GetLeaveTypesQueryHandler>> _appLgger;
+
+        public GetLeaveTypesQueryHandlerTests()
+        {
+            _mockRepo = MockLeaveTypeRepository.GetLeaeveTypeMockLeaveTypeRepository();
+            // Tạo cấu hình AutoMapper cho Unit Test
+            var mapperConfig = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile<LeaveTypeProfile>();  // add Profile
+            });
+
+            // Kiểm tra mapping hợp lệ
+            mapperConfig.AssertConfigurationIsValid();
+
+            // Tạo IMapper để dùng trong test
+            _mapper = mapperConfig.CreateMapper();
+            _appLgger = new Mock<IAppLogger<GetLeaveTypesQueryHandler>>();
+
+
+
+        }
+    }
+}

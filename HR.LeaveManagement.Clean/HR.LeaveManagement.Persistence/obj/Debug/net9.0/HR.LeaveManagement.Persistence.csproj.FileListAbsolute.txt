@@ -1,0 +1,17 @@
+D:\ProjectNet\HR.LeaveManagement.Clean\HR.LeaveManagement.Persistence\bin\Debug\net9.0\HR.LeaveManagement.Persistence.deps.json
+D:\ProjectNet\HR.LeaveManagement.Clean\HR.LeaveManagement.Persistence\bin\Debug\net9.0\HR.LeaveManagement.Persistence.dll
+D:\ProjectNet\HR.LeaveManagement.Clean\HR.LeaveManagement.Persistence\bin\Debug\net9.0\HR.LeaveManagement.Persistence.pdb
+D:\ProjectNet\HR.LeaveManagement.Clean\HR.LeaveManagement.Persistence\bin\Debug\net9.0\HR.LeaveManagement.Application.dll
+D:\ProjectNet\HR.LeaveManagement.Clean\HR.LeaveManagement.Persistence\bin\Debug\net9.0\HR.LeaveManagement.Domain.dll
+D:\ProjectNet\HR.LeaveManagement.Clean\HR.LeaveManagement.Persistence\bin\Debug\net9.0\HR.LeaveManagement.Application.pdb
+D:\ProjectNet\HR.LeaveManagement.Clean\HR.LeaveManagement.Persistence\bin\Debug\net9.0\HR.LeaveManagement.Domain.pdb
+D:\ProjectNet\HR.LeaveManagement.Clean\HR.LeaveManagement.Persistence\obj\Debug\net9.0\HR.LeaveManagement.Persistence.csproj.AssemblyReference.cache
+D:\ProjectNet\HR.LeaveManagement.Clean\HR.LeaveManagement.Persistence\obj\Debug\net9.0\HR.LeaveManagement.Persistence.GeneratedMSBuildEditorConfig.editorconfig
+D:\ProjectNet\HR.LeaveManagement.Clean\HR.LeaveManagement.Persistence\obj\Debug\net9.0\HR.LeaveManagement.Persistence.AssemblyInfoInputs.cache
+D:\ProjectNet\HR.LeaveManagement.Clean\HR.LeaveManagement.Persistence\obj\Debug\net9.0\HR.LeaveManagement.Persistence.AssemblyInfo.cs
+D:\ProjectNet\HR.LeaveManagement.Clean\HR.LeaveManagement.Persistence\obj\Debug\net9.0\HR.LeaveManagement.Persistence.csproj.CoreCompileInputs.cache
+D:\ProjectNet\HR.LeaveManagement.Clean\HR.LeaveManagement.Persistence\obj\Debug\net9.0\HR.Leave.AAB3476A.Up2Date
+D:\ProjectNet\HR.LeaveManagement.Clean\HR.LeaveManagement.Persistence\obj\Debug\net9.0\HR.LeaveManagement.Persistence.dll
+D:\ProjectNet\HR.LeaveManagement.Clean\HR.LeaveManagement.Persistence\obj\Debug\net9.0\refint\HR.LeaveManagement.Persistence.dll
+D:\ProjectNet\HR.LeaveManagement.Clean\HR.LeaveManagement.Persistence\obj\Debug\net9.0\HR.LeaveManagement.Persistence.pdb
+D:\ProjectNet\HR.LeaveManagement.Clean\HR.LeaveManagement.Persistence\obj\Debug\net9.0\ref\HR.LeaveManagement.Persistence.dll

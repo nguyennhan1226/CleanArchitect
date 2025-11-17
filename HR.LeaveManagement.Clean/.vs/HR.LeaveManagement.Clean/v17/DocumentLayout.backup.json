@@ -1,0 +1,181 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\ProjectNet\\HR.LeaveManagement.Clean\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2163D8D4-26D4-4013-B2F8-9B6780F3BA59}|HR.LeaveManagement.BlazorUI\\HR.LeaveManagement.BlazorUI.csproj|d:\\projectnet\\hr.leavemanagement.clean\\hr.leavemanagement.blazorui\\pages\\leaverequests\\details.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2163D8D4-26D4-4013-B2F8-9B6780F3BA59}|HR.LeaveManagement.BlazorUI\\HR.LeaveManagement.BlazorUI.csproj|solutionrelative:hr.leavemanagement.blazorui\\pages\\leaverequests\\details.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2163D8D4-26D4-4013-B2F8-9B6780F3BA59}|HR.LeaveManagement.BlazorUI\\HR.LeaveManagement.BlazorUI.csproj|d:\\projectnet\\hr.leavemanagement.clean\\hr.leavemanagement.blazorui\\pages\\leaverequests\\details.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2163D8D4-26D4-4013-B2F8-9B6780F3BA59}|HR.LeaveManagement.BlazorUI\\HR.LeaveManagement.BlazorUI.csproj|solutionrelative:hr.leavemanagement.blazorui\\pages\\leaverequests\\details.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2163D8D4-26D4-4013-B2F8-9B6780F3BA59}|HR.LeaveManagement.BlazorUI\\HR.LeaveManagement.BlazorUI.csproj|d:\\projectnet\\hr.leavemanagement.clean\\hr.leavemanagement.blazorui\\pages\\leaverequests\\create.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2163D8D4-26D4-4013-B2F8-9B6780F3BA59}|HR.LeaveManagement.BlazorUI\\HR.LeaveManagement.BlazorUI.csproj|solutionrelative:hr.leavemanagement.blazorui\\pages\\leaverequests\\create.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5FFAD97A-EFA8-481B-9DD2-087419C23D09}|HR.LeaveManagement.Application\\HR.LeaveManagement.Application.csproj|d:\\projectnet\\hr.leavemanagement.clean\\hr.leavemanagement.application\\features\\leaverequest\\commands\\changeleaverequestapproval\\changeleaverequestapprovalcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5FFAD97A-EFA8-481B-9DD2-087419C23D09}|HR.LeaveManagement.Application\\HR.LeaveManagement.Application.csproj|solutionrelative:hr.leavemanagement.application\\features\\leaverequest\\commands\\changeleaverequestapproval\\changeleaverequestapprovalcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2163D8D4-26D4-4013-B2F8-9B6780F3BA59}|HR.LeaveManagement.BlazorUI\\HR.LeaveManagement.BlazorUI.csproj|d:\\projectnet\\hr.leavemanagement.clean\\hr.leavemanagement.blazorui\\services\\leaverequestservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2163D8D4-26D4-4013-B2F8-9B6780F3BA59}|HR.LeaveManagement.BlazorUI\\HR.LeaveManagement.BlazorUI.csproj|solutionrelative:hr.leavemanagement.blazorui\\services\\leaverequestservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5FFAD97A-EFA8-481B-9DD2-087419C23D09}|HR.LeaveManagement.Application\\HR.LeaveManagement.Application.csproj|d:\\projectnet\\hr.leavemanagement.clean\\hr.leavemanagement.application\\features\\leaverequest\\queries\\getleaverequests\\getleaverequestquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5FFAD97A-EFA8-481B-9DD2-087419C23D09}|HR.LeaveManagement.Application\\HR.LeaveManagement.Application.csproj|solutionrelative:hr.leavemanagement.application\\features\\leaverequest\\queries\\getleaverequests\\getleaverequestquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5FFAD97A-EFA8-481B-9DD2-087419C23D09}|HR.LeaveManagement.Application\\HR.LeaveManagement.Application.csproj|d:\\projectnet\\hr.leavemanagement.clean\\hr.leavemanagement.application\\features\\leaverequest\\shared\\baseleaverequestvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5FFAD97A-EFA8-481B-9DD2-087419C23D09}|HR.LeaveManagement.Application\\HR.LeaveManagement.Application.csproj|solutionrelative:hr.leavemanagement.application\\features\\leaverequest\\shared\\baseleaverequestvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5FFAD97A-EFA8-481B-9DD2-087419C23D09}|HR.LeaveManagement.Application\\HR.LeaveManagement.Application.csproj|d:\\projectnet\\hr.leavemanagement.clean\\hr.leavemanagement.application\\features\\leaveallocation\\commands\\createleaveallocation\\createleaveallocationcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5FFAD97A-EFA8-481B-9DD2-087419C23D09}|HR.LeaveManagement.Application\\HR.LeaveManagement.Application.csproj|solutionrelative:hr.leavemanagement.application\\features\\leaveallocation\\commands\\createleaveallocation\\createleaveallocationcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5FFAD97A-EFA8-481B-9DD2-087419C23D09}|HR.LeaveManagement.Application\\HR.LeaveManagement.Application.csproj|d:\\projectnet\\hr.leavemanagement.clean\\hr.leavemanagement.application\\features\\leaveallocation\\commands\\createleaveallocation\\createleaveallocationcommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5FFAD97A-EFA8-481B-9DD2-087419C23D09}|HR.LeaveManagement.Application\\HR.LeaveManagement.Application.csproj|solutionrelative:hr.leavemanagement.application\\features\\leaveallocation\\commands\\createleaveallocation\\createleaveallocationcommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2163D8D4-26D4-4013-B2F8-9B6780F3BA59}|HR.LeaveManagement.BlazorUI\\HR.LeaveManagement.BlazorUI.csproj|d:\\projectnet\\hr.leavemanagement.clean\\hr.leavemanagement.blazorui\\handlers\\jwtauthorizationmessagehander.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2163D8D4-26D4-4013-B2F8-9B6780F3BA59}|HR.LeaveManagement.BlazorUI\\HR.LeaveManagement.BlazorUI.csproj|solutionrelative:hr.leavemanagement.blazorui\\handlers\\jwtauthorizationmessagehander.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Create.razor",
+              "DocumentMoniker": "D:\\ProjectNet\\HR.LeaveManagement.Clean\\HR.LeaveManagement.BlazorUI\\Pages\\LeaveRequests\\Create.razor",
+              "RelativeDocumentMoniker": "HR.LeaveManagement.BlazorUI\\Pages\\LeaveRequests\\Create.razor",
+              "ToolTip": "D:\\ProjectNet\\HR.LeaveManagement.Clean\\HR.LeaveManagement.BlazorUI\\Pages\\LeaveRequests\\Create.razor",
+              "RelativeToolTip": "HR.LeaveManagement.BlazorUI\\Pages\\LeaveRequests\\Create.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-30T14:55:16.373Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ChangeLeaveRequestApprovalCommandHandler.cs",
+              "DocumentMoniker": "D:\\ProjectNet\\HR.LeaveManagement.Clean\\HR.LeaveManagement.Application\\Features\\LeaveRequest\\Commands\\ChangeLeaveRequestApproval\\ChangeLeaveRequestApprovalCommandHandler.cs",
+              "RelativeDocumentMoniker": "HR.LeaveManagement.Application\\Features\\LeaveRequest\\Commands\\ChangeLeaveRequestApproval\\ChangeLeaveRequestApprovalCommandHandler.cs",
+              "ToolTip": "D:\\ProjectNet\\HR.LeaveManagement.Clean\\HR.LeaveManagement.Application\\Features\\LeaveRequest\\Commands\\ChangeLeaveRequestApproval\\ChangeLeaveRequestApprovalCommandHandler.cs",
+              "RelativeToolTip": "HR.LeaveManagement.Application\\Features\\LeaveRequest\\Commands\\ChangeLeaveRequestApproval\\ChangeLeaveRequestApprovalCommandHandler.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAYwDUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-30T14:44:39.933Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Details.razor.cs",
+              "DocumentMoniker": "D:\\ProjectNet\\HR.LeaveManagement.Clean\\HR.LeaveManagement.BlazorUI\\Pages\\LeaveRequests\\Details.razor.cs",
+              "RelativeDocumentMoniker": "HR.LeaveManagement.BlazorUI\\Pages\\LeaveRequests\\Details.razor.cs",
+              "ToolTip": "D:\\ProjectNet\\HR.LeaveManagement.Clean\\HR.LeaveManagement.BlazorUI\\Pages\\LeaveRequests\\Details.razor.cs",
+              "RelativeToolTip": "HR.LeaveManagement.BlazorUI\\Pages\\LeaveRequests\\Details.razor.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAsAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-30T14:26:26.347Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Details.razor",
+              "DocumentMoniker": "D:\\ProjectNet\\HR.LeaveManagement.Clean\\HR.LeaveManagement.BlazorUI\\Pages\\LeaveRequests\\Details.razor",
+              "RelativeDocumentMoniker": "HR.LeaveManagement.BlazorUI\\Pages\\LeaveRequests\\Details.razor",
+              "ToolTip": "D:\\ProjectNet\\HR.LeaveManagement.Clean\\HR.LeaveManagement.BlazorUI\\Pages\\LeaveRequests\\Details.razor",
+              "RelativeToolTip": "HR.LeaveManagement.BlazorUI\\Pages\\LeaveRequests\\Details.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-25T15:03:50.237Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "LeaveRequestService.cs",
+              "DocumentMoniker": "D:\\ProjectNet\\HR.LeaveManagement.Clean\\HR.LeaveManagement.BlazorUI\\Services\\LeaveRequestService.cs",
+              "RelativeDocumentMoniker": "HR.LeaveManagement.BlazorUI\\Services\\LeaveRequestService.cs",
+              "ToolTip": "D:\\ProjectNet\\HR.LeaveManagement.Clean\\HR.LeaveManagement.BlazorUI\\Services\\LeaveRequestService.cs",
+              "RelativeToolTip": "HR.LeaveManagement.BlazorUI\\Services\\LeaveRequestService.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAIA7wBYAAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-30T14:42:27.44Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "GetLeaveRequestQuery.cs",
+              "DocumentMoniker": "D:\\ProjectNet\\HR.LeaveManagement.Clean\\HR.LeaveManagement.Application\\Features\\LeaveRequest\\Queries\\GetLeaveRequests\\GetLeaveRequestQuery.cs",
+              "RelativeDocumentMoniker": "HR.LeaveManagement.Application\\Features\\LeaveRequest\\Queries\\GetLeaveRequests\\GetLeaveRequestQuery.cs",
+              "ToolTip": "D:\\ProjectNet\\HR.LeaveManagement.Clean\\HR.LeaveManagement.Application\\Features\\LeaveRequest\\Queries\\GetLeaveRequests\\GetLeaveRequestQuery.cs",
+              "RelativeToolTip": "HR.LeaveManagement.Application\\Features\\LeaveRequest\\Queries\\GetLeaveRequests\\GetLeaveRequestQuery.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-26T03:49:15.849Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "BaseLeaveRequestValidator.cs",
+              "DocumentMoniker": "D:\\ProjectNet\\HR.LeaveManagement.Clean\\HR.LeaveManagement.Application\\Features\\LeaveRequest\\Shared\\BaseLeaveRequestValidator.cs",
+              "RelativeDocumentMoniker": "HR.LeaveManagement.Application\\Features\\LeaveRequest\\Shared\\BaseLeaveRequestValidator.cs",
+              "ToolTip": "D:\\ProjectNet\\HR.LeaveManagement.Clean\\HR.LeaveManagement.Application\\Features\\LeaveRequest\\Shared\\BaseLeaveRequestValidator.cs",
+              "RelativeToolTip": "HR.LeaveManagement.Application\\Features\\LeaveRequest\\Shared\\BaseLeaveRequestValidator.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAB0AAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-25T15:12:41.43Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CreateLeaveAllocationCommandHandler.cs",
+              "DocumentMoniker": "D:\\ProjectNet\\HR.LeaveManagement.Clean\\HR.LeaveManagement.Application\\Features\\LeaveAllocation\\Commands\\CreateLeaveAllocation\\CreateLeaveAllocationCommandHandler.cs",
+              "RelativeDocumentMoniker": "HR.LeaveManagement.Application\\Features\\LeaveAllocation\\Commands\\CreateLeaveAllocation\\CreateLeaveAllocationCommandHandler.cs",
+              "ToolTip": "D:\\ProjectNet\\HR.LeaveManagement.Clean\\HR.LeaveManagement.Application\\Features\\LeaveAllocation\\Commands\\CreateLeaveAllocation\\CreateLeaveAllocationCommandHandler.cs",
+              "RelativeToolTip": "HR.LeaveManagement.Application\\Features\\LeaveAllocation\\Commands\\CreateLeaveAllocation\\CreateLeaveAllocationCommandHandler.cs",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAewE4AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-25T14:42:45.063Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CreateLeaveAllocationCommandValidator.cs",
+              "DocumentMoniker": "D:\\ProjectNet\\HR.LeaveManagement.Clean\\HR.LeaveManagement.Application\\Features\\LeaveAllocation\\Commands\\CreateLeaveAllocation\\CreateLeaveAllocationCommandValidator.cs",
+              "RelativeDocumentMoniker": "HR.LeaveManagement.Application\\Features\\LeaveAllocation\\Commands\\CreateLeaveAllocation\\CreateLeaveAllocationCommandValidator.cs",
+              "ToolTip": "D:\\ProjectNet\\HR.LeaveManagement.Clean\\HR.LeaveManagement.Application\\Features\\LeaveAllocation\\Commands\\CreateLeaveAllocation\\CreateLeaveAllocationCommandValidator.cs",
+              "RelativeToolTip": "HR.LeaveManagement.Application\\Features\\LeaveAllocation\\Commands\\CreateLeaveAllocation\\CreateLeaveAllocationCommandValidator.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAjwBoAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-25T14:48:54.758Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "JwtAuthorizationMessageHander.cs",
+              "DocumentMoniker": "D:\\ProjectNet\\HR.LeaveManagement.Clean\\HR.LeaveManagement.BlazorUI\\Handlers\\JwtAuthorizationMessageHander.cs",
+              "RelativeDocumentMoniker": "HR.LeaveManagement.BlazorUI\\Handlers\\JwtAuthorizationMessageHander.cs",
+              "ToolTip": "D:\\ProjectNet\\HR.LeaveManagement.Clean\\HR.LeaveManagement.BlazorUI\\Handlers\\JwtAuthorizationMessageHander.cs",
+              "RelativeToolTip": "HR.LeaveManagement.BlazorUI\\Handlers\\JwtAuthorizationMessageHander.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAgwBQAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-25T14:28:33.058Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

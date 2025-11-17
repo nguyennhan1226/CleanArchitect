@@ -1,0 +1,116 @@
+﻿using HR.LeaveManagement.Application.Features.LeaveType.Queries.GetAllLeaveTypes;
+using HR.LeaveManagement.Application.Features.LeaveType.Queries.GetAllLeaveTypesDetail;
+using HR.LeaveManagement.Application.Features.LeaveType.Commands.CreateLeaveType;
+using HR.LeaveManagement.Application.Features.LeaveType.Commands.UpdateLeaveType;
+using HR.LeaveManagement.Application.Features.LeaveType.Commands.DeleteLeavteType;
+using MediatR;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
+
+namespace HR.LeaveManagement.Api.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    [SwaggerTag("Leave Types Management - Create, Read, Update and Delete leave types")]
+    public class LeaveTypesController : ControllerBase
+    {
+        private readonly IMediator _mediator;
+
+        public LeaveTypesController(IMediator mediator)
+        {
+            this._mediator = mediator;
+        }
+
+        /// <summary>
+        /// Get all leave types
+        /// </summary>
+        /// <returns>List of all leave types</returns>
+        [HttpGet]
+        [SwaggerOperation(
+            Summary = "Get all leave types",
+            Description = "Retrieves a list of all available leave types in the system"
+        )]
+        [SwaggerResponse(200, "Successfully retrieved leave types", typeof(List<LeaveTypeDto>))]
+        [SwaggerResponse(404, "No leave types found")]
+        public async Task<ActionResult<List<LeaveTypeDto>>> Get()
+        {
+            var leaveTypes = await _mediator.Send(new GetLeaveTypesQuery());
+            return Ok(leaveTypes);
+        }
+
+        /// <summary>
+        /// Get leave type details by ID
+        /// </summary>
+        /// <param name="id">The leave type ID</param>
+        /// <returns>Detailed information about the leave type</returns>
+        [HttpGet("{id}")]
+        [SwaggerOperation(
+            Summary = "Get leave type details",
+            Description = "Retrieves detailed information about a specific leave type"
+        )]
+        [SwaggerResponse(200, "Successfully retrieved leave type details", typeof(LeaveTypeDetailsDto))]
+        [SwaggerResponse(404, "Leave type not found")]
+        public async Task<ActionResult<LeaveTypeDetailsDto>> Get(int id)
+        {
+            var leaveType = await _mediator.Send(new GetLeaveTypesDetailsQuery(id));
+            return Ok(leaveType);
+        }
+
+        /// <summary>
+        /// Create a new leave type
+        /// </summary>
+        /// <param name="leaveType">Leave type creation details</param>
+        /// <returns>ID of the newly created leave type</returns>
+        [HttpPost]
+        [SwaggerOperation(
+            Summary = "Create a new leave type",
+            Description = "Creates a new leave type with the provided information"
+        )]
+        [SwaggerResponse(201, "Leave type created successfully", typeof(int))]
+        [SwaggerResponse(400, "Invalid input data")]
+        public async Task<ActionResult<int>> Post([FromBody] CreateLeaveTypeCommand leaveType)
+        {
+            var response = await _mediator.Send(leaveType);
+            return CreatedAtAction(nameof(Get), new { id = response }, response);
+        }
+
+        /// <summary>
+        /// Update an existing leave type
+        /// </summary>
+        /// <param name="leaveType">Leave type update details</param>
+        /// <returns>No content on successful update</returns>
+        [HttpPut]
+        [SwaggerOperation(
+            Summary = "Update a leave type",
+            Description = "Updates an existing leave type with the provided information"
+        )]
+        [SwaggerResponse(204, "Leave type updated successfully")]
+        [SwaggerResponse(400, "Invalid input data")]
+        [SwaggerResponse(404, "Leave type not found")]
+        public async Task<ActionResult> Put([FromBody] UpdateLeaveTypeCommand leaveType)
+        {
+            await _mediator.Send(leaveType);
+            return NoContent();
+        }
+
+        /// <summary>
+        /// Delete a leave type
+        /// </summary>
+        /// <param name="id">The leave type ID to delete</param>
+        /// <returns>No content on successful deletion</returns>
+        [HttpDelete("{id}")]
+        [SwaggerOperation(
+            Summary = "Delete a leave type",
+            Description = "Permanently deletes a leave type from the system"
+        )]
+        [SwaggerResponse(204, "Leave type deleted successfully")]
+        [SwaggerResponse(404, "Leave type not found")]
+        public async Task<ActionResult> Delete(int id)
+        {
+            var command = new DeleteLeaveTypeCommand { Id = id };
+            await _mediator.Send(command);
+            return NoContent();
+        }
+    }
+}

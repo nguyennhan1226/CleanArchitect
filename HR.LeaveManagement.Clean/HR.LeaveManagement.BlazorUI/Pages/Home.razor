@@ -1,0 +1,20 @@
+﻿@page "/"
+
+
+
+<PageTitle>Home</PageTitle>
+
+<h1 class="text-center">HR Leave Management System</h1>
+<br />
+<br />
+
+<AuthorizeView>
+    <Authorized>
+       <button class="btn btn-danger" @onclick="Logout">Logout</button>
+    </Authorized>
+    <NotAuthorized>
+        <button class="btn btn-success" @onclick="Login">Login</button>
+        ||
+        <button class="btn btn-primary" @onclick="Register">Register</button>
+    </NotAuthorized>
+</AuthorizeView>

@@ -1,0 +1,90 @@
+﻿using AutoMapper;
+using HR.LeaveManagement.Application.Contracts.Logging;
+using HR.LeaveManagement.Application.Contracts.Persistence;
+using HR.LeaveManagement.Application.Features.LeaveType.Queries.GetAllLeaveTypes;
+using HR.LeaveManagement.Application.MappingProfiles;
+using HR.LeaveManagement.Application.UnitTests.Mocks;
+using HR.LeaveManagement.Infrastructure.Logging;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Moq;
+using Shouldly;
+
+namespace HR.LeaveManagement.Application.UnitTests.Features.LeaveTypes.Queries
+{
+    public class GetLeaveTypesQueryHandlerTests
+    {
+        private readonly Mock<ILeaveTypeRepository> _mockRepo;
+        private IMapper _mapper;
+        private Mock<IAppLogger<GetLeaveTypesQueryHandler>> _appLogger;
+
+        public GetLeaveTypesQueryHandlerTests()
+        {
+            _mockRepo = MockLeaveTypeRepository.GetLeaeveTypeMockLeaveTypeRepository();
+            
+            // AutoMapper 15.x configuration using DI container approach
+            var services = new ServiceCollection();
+            
+            // Add logging services
+            services.AddLogging();
+            
+            // Add AutoMapper
+            services.AddAutoMapper(cfg => {
+                cfg.AddProfile<LeaveTypeProfile>();
+            }, typeof(LeaveTypeProfile).Assembly);
+            
+            // Add custom logger adapter
+            services.AddScoped(typeof(IAppLogger<>), typeof(LoggerAdapter<>));
+            
+            var serviceProvider = services.BuildServiceProvider();
+            _mapper = serviceProvider.GetRequiredService<IMapper>();
+            
+            _appLogger = new Mock<IAppLogger<GetLeaveTypesQueryHandler>>();
+        }
+
+        [Fact]
+        public async Task GetLeaveTypesListTest()
+        {
+            // Arrange
+            var handler = new GetLeaveTypesQueryHandler(_mapper, _mockRepo.Object, _appLogger.Object);
+
+            // Act
+            var result = await handler.Handle(new GetLeaveTypesQuery(), CancellationToken.None);
+
+            // Assert
+            result.ShouldBeOfType<List<LeaveTypeDto>>();
+            result.Count.ShouldBe(3);
+        }
+
+        //[Fact]
+        //public async Task GetLeaveTypesList_ShouldReturnCorrectData()
+        //{
+        //    // Arrange
+        //    var handler = new GetLeaveTypesQueryHandler(_mapper, _mockRepo.Object, _appLogger.Object);
+
+        //    // Act
+        //    var result = await handler.Handle(new GetLeaveTypesQuery(), CancellationToken.None);
+
+        //    // Assert
+        //    result.ShouldNotBeNull();
+        //    result.Count.ShouldBe(3);
+        //    result.ShouldContain(x => x.Name == "Test Vacation" && x.DefaultDays == 10);
+        //    result.ShouldContain(x => x.Name == "Test Sick" && x.DefaultDays == 12);
+        //    result.ShouldContain(x => x.Name == "Test Unpaid" && x.DefaultDays == 20);
+        //}
+
+        //[Fact]
+        //public async Task GetLeaveTypesList_VerifyRepositoryAndLoggerCalls()
+        //{
+        //    // Arrange
+        //    var handler = new GetLeaveTypesQueryHandler(_mapper, _mockRepo.Object, _appLogger.Object);
+
+        //    // Act
+        //    var result = await handler.Handle(new GetLeaveTypesQuery(), CancellationToken.None);
+
+        //    // Assert
+        //    _mockRepo.Verify(r => r.GetAsync(), Times.Once);
+        //    _appLogger.Verify(l => l.LogInformation("Leave types were retrieved successfully"), Times.Once);
+        //}
+    }
+}

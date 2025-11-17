@@ -1,0 +1,144 @@
+﻿using AutoMapper;
+using HR.LeaveManagement.Application.Contracts.Identity;
+using HR.LeaveManagement.Application.Contracts.Logging;
+using HR.LeaveManagement.Application.Contracts.Persistence;
+using HR.LeaveManagement.Application.Exceptions;
+using HR.LeaveManagement.Application.Models.Identity;
+using MediatR;
+
+namespace HR.LeaveManagement.Application.Features.LeaveAllocation.Commands.CreateLeaveAllocation
+{
+    public class CreateLeaveAllocationCommandHandler : IRequestHandler<CreateLeaveAllocationCommand, Unit>
+    {
+        private readonly ILeaveAllocationRepository _leaveAllocationRepository;
+        private readonly ILeaveTypeRepository _leaveTypeRepository;
+        private readonly IUserService _userService;
+        private readonly IAppLogger<CreateLeaveAllocationCommandHandler> _logger;
+
+        public CreateLeaveAllocationCommandHandler(
+            ILeaveAllocationRepository leaveAllocationRepository, 
+            ILeaveTypeRepository leaveTypeRepository, 
+            IUserService userService,
+            IAppLogger<CreateLeaveAllocationCommandHandler> logger)
+        {
+            _leaveAllocationRepository = leaveAllocationRepository ?? throw new ArgumentNullException(nameof(leaveAllocationRepository));
+            _leaveTypeRepository = leaveTypeRepository ?? throw new ArgumentNullException(nameof(leaveTypeRepository));
+            _userService = userService ?? throw new ArgumentNullException(nameof(userService));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        }
+
+        public async Task<Unit> Handle(CreateLeaveAllocationCommand request, CancellationToken cancellationToken)
+        {
+            ArgumentNullException.ThrowIfNull(request);
+            
+            _logger.LogInformation("Starting leave allocation creation for LeaveTypeId: {LeaveTypeId}", request.LeaveTypeId);
+
+            // Validate request
+            await ValidateRequestAsync(request, cancellationToken);
+
+            // Get leave type and employees concurrently for better performance
+            var (leaveType, employees) = await GetLeaveTypeAndEmployeesAsync(request.LeaveTypeId, cancellationToken);
+
+            // Validate leave type exists
+            if (leaveType == null)
+            {
+                _logger.LogWarning("Leave type with ID {LeaveTypeId} not found", request.LeaveTypeId);
+                throw new NotFoundException(nameof(Domain.LeaveType), request.LeaveTypeId);
+            }
+
+            // Create allocations for eligible employees
+            var allocations = await CreateAllocationsForEligibleEmployeesAsync(
+                employees, leaveType, DateTime.UtcNow.Year, cancellationToken);
+
+            // Save allocations if any were created
+            if (allocations.Count > 0)
+            {
+                await _leaveAllocationRepository.AddAllocations(allocations);
+                _logger.LogInformation("Successfully created {AllocationCount} leave allocations for LeaveTypeId: {LeaveTypeId}", 
+                    allocations.Count, request.LeaveTypeId);
+            }
+            else
+            {
+                _logger.LogInformation("No new allocations created - all employees already have allocations for LeaveTypeId: {LeaveTypeId}", 
+                    request.LeaveTypeId);
+            }
+
+            return Unit.Value;
+        }
+
+        private async Task ValidateRequestAsync(CreateLeaveAllocationCommand request, CancellationToken cancellationToken)
+        {
+            var validator = new CreateLeaveAllocationCommandValidator(_leaveTypeRepository);
+            var validationResult = await validator.ValidateAsync(request, cancellationToken);
+            
+            if (validationResult.Errors.Count > 0)
+            {
+                _logger.LogWarning("Validation failed for leave allocation request. Errors: {ValidationErrors}", 
+                    string.Join("; ", validationResult.Errors.Select(e => e.ErrorMessage)));
+                throw new BadRequestException("Invalid allocation request", validationResult);
+            }
+        }
+
+        private async Task<(Domain.LeaveType leaveType, List<Employee> employees)> GetLeaveTypeAndEmployeesAsync(
+            int leaveTypeId, CancellationToken cancellationToken)
+        {
+            // Execute both operations concurrently for better performance
+            var leaveTypeTask = _leaveTypeRepository.GetByIdAsync(leaveTypeId);
+            var employeesTask = _userService.GetEmployees();
+
+            await Task.WhenAll(leaveTypeTask, employeesTask);
+
+            return (await leaveTypeTask, await employeesTask);
+        }
+
+        private async Task<List<Domain.LeaveAllocation>> CreateAllocationsForEligibleEmployeesAsync(
+            List<Employee> employees, Domain.LeaveType leaveType, int period, CancellationToken cancellationToken)
+        {
+            var allocations = new List<Domain.LeaveAllocation>();
+            
+            // Batch check existing allocations to reduce database calls
+            var existingAllocations = await GetExistingAllocationsAsync(employees, leaveType.Id, period);
+            var existingEmployeeIds = existingAllocations.ToHashSet();
+
+            foreach (var employee in employees)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+
+                if (!existingEmployeeIds.Contains(employee.Id))
+                {
+                    allocations.Add(new Domain.LeaveAllocation
+                    {
+                        EmployeeId = employee.Id,
+                        LeaveTypeId = leaveType.Id,
+                        NumberOfDays = leaveType.DefaultDays,
+                        Period = period
+                    });
+                }
+            }
+
+            _logger.LogInformation("Created {NewAllocationCount} new allocations out of {TotalEmployeeCount} employees", 
+                allocations.Count, employees.Count);
+
+            return allocations;
+        }
+
+        private async Task<IEnumerable<string>> GetExistingAllocationsAsync(
+            List<Employee> employees, int leaveTypeId, int period)
+        {
+            // This could be optimized further with a batch query method in the repository
+            // For now, we'll check each employee (consider adding a batch method to ILeaveAllocationRepository)
+            var existingEmployeeIds = new List<string>();
+            
+            foreach (var employee in employees)
+            {
+                var exists = await _leaveAllocationRepository.AllocationExists(employee.Id, leaveTypeId, period);
+                if (exists)
+                {
+                    existingEmployeeIds.Add(employee.Id);
+                }
+            }
+
+            return existingEmployeeIds;
+        }
+    }
+}
