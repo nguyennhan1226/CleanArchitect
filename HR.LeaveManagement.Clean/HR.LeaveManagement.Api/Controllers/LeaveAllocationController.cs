@@ -23,7 +23,7 @@ namespace HR.LeaveManagement.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<LeaveAllocationDto>>> Get(bool isLoggedInUser = false)
+        public async Task<ActionResult<List<LeaveAllocationDto>>> Get()
         {
             var leaveAllocations = await _mediator.Send(new GetLeaveAllocationsQuery());
             return Ok(leaveAllocations);
@@ -41,8 +41,8 @@ namespace HR.LeaveManagement.Api.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult> Post([FromBody] CreateLeaveAllocationCommand createLeaveAllocationCommand)
         {
-            var response = await _mediator.Send(createLeaveAllocationCommand);
-            return CreatedAtAction(nameof(Get), new { id = response });
+            var id = await _mediator.Send(createLeaveAllocationCommand);
+            return CreatedAtAction(nameof(Get), new { id });
         }
 
         [HttpPut]
@@ -52,7 +52,7 @@ namespace HR.LeaveManagement.Api.Controllers
         [ProducesDefaultResponseType]
         public async Task<ActionResult> Put([FromBody] UpdateLeaveAllocationCommand updatedLeaveAllocationCommand)
         {
-            var response = await _mediator.Send(updatedLeaveAllocationCommand);
+            await _mediator.Send(updatedLeaveAllocationCommand);
             return NoContent();
         }
 
@@ -62,8 +62,7 @@ namespace HR.LeaveManagement.Api.Controllers
         [ProducesDefaultResponseType]
         public async Task<ActionResult> Delete(int id)
         {
-            var command = new DeleteLeaveAllocationCommand { Id = id };
-            var response = await _mediator.Send(command);
+            await _mediator.Send(new DeleteLeaveAllocationCommand { Id = id });
             return NoContent();
         }
     }
