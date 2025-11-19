@@ -11,7 +11,18 @@ namespace HR.LeaveManagement.Persistence.Repositories
 
         public async Task<bool> IsLeaveTypeUnique(string name)
         {
-            return !await _context.LeaveTypes.AnyAsync(q => q.Name == name);
+            // Input validation
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentException("Leave type name cannot be null or empty.", nameof(name));
+            }
+
+            // Trim and use case-insensitive comparison
+            var trimmedName = name.Trim();
+            var exists = await _context.LeaveTypes
+                .AnyAsync(q => q.Name.ToLower() == trimmedName.ToLower());
+
+            return !exists;
         }
     }
 }
