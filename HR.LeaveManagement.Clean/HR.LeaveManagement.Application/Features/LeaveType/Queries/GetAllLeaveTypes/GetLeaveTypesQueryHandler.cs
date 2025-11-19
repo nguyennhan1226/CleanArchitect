@@ -2,11 +2,6 @@
 using HR.LeaveManagement.Application.Contracts.Logging;
 using HR.LeaveManagement.Application.Contracts.Persistence;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HR.LeaveManagement.Application.Features.LeaveType.Queries.GetAllLeaveTypes
 {
@@ -18,25 +13,18 @@ namespace HR.LeaveManagement.Application.Features.LeaveType.Queries.GetAllLeaveT
 
         public GetLeaveTypesQueryHandler(IMapper mapper, ILeaveTypeRepository leaveTypeRepository, IAppLogger<GetLeaveTypesQueryHandler> logger)
         {
-            this._mapper = mapper;
-            this._leaveTypeRepository = leaveTypeRepository;
-            this._logger = logger;
+            _mapper = mapper;
+            _leaveTypeRepository = leaveTypeRepository;
+            _logger = logger;
         }
 
         public async Task<List<LeaveTypeDto>> Handle(GetLeaveTypesQuery request, CancellationToken cancellationToken)
         {
-            // Query data from database
             var leaveTypes = await _leaveTypeRepository.GetAsync();
 
-            // Validate that data was found
-            if (leaveTypes == null || !leaveTypes.Any())
-            {
-                throw new Exceptions.NotFoundException(nameof(Domain.LeaveType), "No records found");
-            }
-
-            // Convert data to dto
             var data = _mapper.Map<List<LeaveTypeDto>>(leaveTypes);
             _logger.LogInformation("Leave types were retrieved successfully");
+            
             return data;
         }
     }
