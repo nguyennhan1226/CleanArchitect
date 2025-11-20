@@ -15,11 +15,11 @@ namespace HR.LeaveManagement.Application.Features.LeaveType.Queries.GetAllLeaveT
         public GetLeaveTypesQueryHandler(IMapper mapper, ILeaveTypeRepository leaveTypeRepository, IAppLogger<GetLeaveTypesQueryHandler> logger)
         {
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
-            _leaveTypeRepository = leaveTypeRepository ?? throw new ArgumentNullException(nameof(leaveTypeRepository));
+           this._leaveTypeRepository = leaveTypeRepository ?? throw new ArgumentNullException(nameof(leaveTypeRepository));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-        public async Task<List<LeaveTypeDto>> Handle(GetLeaveTypesQuery request, CancellationToken cancellationToken)
+        public async Task<List<LeaveTypeDto>> handle(GetLeaveTypesQuery request, CancellationToken cancellationToken)
         {
             try
             {
@@ -31,25 +31,9 @@ namespace HR.LeaveManagement.Application.Features.LeaveType.Queries.GetAllLeaveT
                 // Get data from repository
                 var leaveTypes = await _leaveTypeRepository.GetAsync();
 
-                // Validate repository result
-                if (leaveTypes == null)
-                {
-                    _logger.LogWarning("Repository returned null for leave types");
-                    throw new NotFoundException(nameof(Domain.LeaveType), "all");
-                }
-
                 // Map to DTO
                 var data = _mapper.Map<List<LeaveTypeDto>>(leaveTypes);
 
-                // Validate mapping result
-                if (data == null)
-                {
-                    _logger.LogError("AutoMapper failed to map leave types to DTOs");
-                    throw new BadRequestException("Mapping failed for leave types");
-                }
-
-                _logger.LogInformation("Successfully retrieved {Count} leave types", data.Count);
-                
                 return data;
             }
             catch (OperationCanceledException)
