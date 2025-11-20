@@ -1,12 +1,8 @@
 ﻿using AutoMapper;
 using HR.LeaveManagement.Application.Contracts.Logging;
 using HR.LeaveManagement.Application.Contracts.Persistence;
+using HR.LeaveManagement.Application.Exceptions;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HR.LeaveManagement.Application.Features.LeaveType.Queries.GetAllLeaveTypes
 {
@@ -18,26 +14,42 @@ namespace HR.LeaveManagement.Application.Features.LeaveType.Queries.GetAllLeaveT
 
         public GetLeaveTypesQueryHandler(IMapper mapper, ILeaveTypeRepository leaveTypeRepository, IAppLogger<GetLeaveTypesQueryHandler> logger)
         {
-            this._mapper = mapper;
-            this._leaveTypeRepository = leaveTypeRepository;
-            this._logger = logger;
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+           this._leaveTypeRepository = leaveTypeRepository ?? throw new ArgumentNullException(nameof(leaveTypeRepository));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-        public async Task<List<LeaveTypeDto>> Handle(GetLeaveTypesQuery request, CancellationToken cancellationToken)
+        public async Task<List<LeaveTypeDto>> handle(GetLeaveTypesQuery request, CancellationToken cancellationToken)
         {
-            // Query data from database
-            var leaveTypes = await _leaveTypeRepository.GetAsync();
-
-            // Validate that data was found
-            if (leaveTypes == null || !leaveTypes.Any())
+            try
             {
-                throw new Exceptions.NotFoundException(nameof(Domain.LeaveType), "No records found");
-            }
+                _logger.LogInformation("Starting retrieval of all leave types");
 
-            // Convert data to dto
-            var data = _mapper.Map<List<LeaveTypeDto>>(leaveTypes);
-            _logger.LogInformation("Leave types were retrieved successfully");
-            return data;
+                // Support cancellation
+                cancellationToken.ThrowIfCancellationRequested();
+
+                // Get data from repository
+                var leaveTypes = await _leaveTypeRepository.GetAsync();
+
+                // Map to DTO
+                var data = _mapper.Map<List<LeaveTypeDto>>(leaveTypes);
+
+                return data;
+            }
+            catch (OperationCanceledException)
+            {
+                _logger.LogWarning("GetLeaveTypes operation was cancelled");
+                throw;
+            }
+            catch (NotFoundException)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while retrieving leave types");
+                throw new BadRequestException("Failed to retrieve leave types");
+            }
         }
     }
 }
