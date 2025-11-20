@@ -14,16 +14,14 @@ namespace HR.LeaveManagement.Application.Features.LeaveType.Queries.GetAllLeaveT
 
         public GetLeaveTypesQueryHandler(IMapper mapper, ILeaveTypeRepository leaveTypeRepository, IAppLogger<GetLeaveTypesQueryHandler> logger)
         {
-            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
-           this._leaveTypeRepository = leaveTypeRepository ?? throw new ArgumentNullException(nameof(leaveTypeRepository));
-            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _mapper = mapper ;
+           this._leaveTypeRepository = leaveTypeRepository ;
+            _logger = logger ;
         }
 
-        public async Task<List<LeaveTypeDto>> handle(GetLeaveTypesQuery request, CancellationToken cancellationToken)
+        public async Task<List<LeaveTypeDto>> solve(GetLeaveTypesQuery request, CancellationToken cancellationToken)
         {
-            try
-            {
-                _logger.LogInformation("Starting retrieval of all leave types");
+             _logger.LogInformation("Starting retrieval of all leave types");
 
                 // Support cancellation
                 cancellationToken.ThrowIfCancellationRequested();
@@ -35,21 +33,7 @@ namespace HR.LeaveManagement.Application.Features.LeaveType.Queries.GetAllLeaveT
                 var data = _mapper.Map<List<LeaveTypeDto>>(leaveTypes);
 
                 return data;
-            }
-            catch (OperationCanceledException)
-            {
-                _logger.LogWarning("GetLeaveTypes operation was cancelled");
-                throw;
-            }
-            catch (NotFoundException)
-            {
-                throw;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error occurred while retrieving leave types");
-                throw new BadRequestException("Failed to retrieve leave types");
-            }
+           
         }
     }
 }
